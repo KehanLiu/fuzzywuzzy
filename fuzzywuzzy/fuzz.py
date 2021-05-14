@@ -25,7 +25,7 @@ def ratio(s1, s2):
     s1, s2 = utils.make_type_consistent(s1, s2)
 
     m = SequenceMatcher(None, s1, s2)
-    return utils.intr(100 * m.ratio())
+    return 100 * m.ratio()
 
 
 @utils.check_for_none
@@ -60,12 +60,10 @@ def partial_ratio(s1, s2):
 
         m2 = SequenceMatcher(None, shorter, long_substr)
         r = m2.ratio()
-        if r > .995:
-            return 100
-        else:
-            scores.append(r)
 
-    return utils.intr(100 * max(scores))
+        scores.append(r)
+
+    return 100 * max(scores)
 
 
 ##############################
